@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            empty-cells: hide;
+            width: 100%;
+
+        }
+        th, td {
+            border: 2px solid black;
+        }
+        h1{
+            text-align: center;
+        }
+        div,a{
+            text-align: right;
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+</head>
+
+
+<body>
+<h1>Student list</h1>
+<div>
+<a th:href="@{/students/add}">Add student</a>
+<a th:href="@{/students/search}">Search student</a>
+</div>
+<table>
+    <tr>
+    <th >№</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Country</th>
+    <th>City</th>
+    <th>Address</th>
+    <th>Groups</th>
+    <th>Buttons</th>
+    </tr>
+   <tr th:each ="student : ${students}">
+    <td th:text="${student.id}"></td>
+    <td th:text="${student.name}"></td>
+   <td th:text="${student.surname}"></td>
+  <td th:text="${student.address.country}"></td>
+  <td th:text="${student.address.city}"></td>
+  <td th:text="${student.address.street}"></td>
+   <td th:text="${student.group.groupName}"></td>
+       <td>
+
+
+           <a th:href="@{/students/edit/{id}(id=${student.id})}">Edit</a>
+           <a th:href="@{/students/delete/{id}(id=${student.id})}">Delete</a>
+       </td>
+
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Edit Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        h1 {
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Edit Student</h1>
+<form action="#" th:action="@{/students/edit/{id}}" th:object="${student}" method="post">
+   <p>Id: <input type="text" readonly th:field="*{id}" />
+    <p>First name: <input type="text" placeholder="Новая фамилия" th:field="*{name}" />
+    Last name: <input type="text" placeholder="Новое имя" th:field="*{surname}" /></p>
+    <p>Groups: <input type="text" placeholder="Новая группа" th:field="*{group.groupName}" /></p>
+    <p>Country: <input type="text" placeholder="Новая страна" th:field="*{address.country}" />
+    City: <input type="text" placeholder="Новый город" th:field="*{address.city}" />
+    Street: <input type="text" placeholder="Новая улица" th:field="*{address.street}" /></p>
+
+    <p><input type="submit" value="Submit" />
+        <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

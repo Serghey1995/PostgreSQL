@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Student Search</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        h1 {
+            text-align: center;
+        }
+        div,a{
+            text-align: right;
+            text-decoration: none;
+            color: black;
+        }
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            empty-cells: hide;
+            width: 100%;
+
+        }
+        th, td {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+<h1>Students List</h1>
+<div>
+    <a th:href="@{/students}">Back to student list </a>
+</div>
+
+
+<table>
+    <tr>
+        <th >№</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Groups</th>
+
+    </tr>
+    <tr th:each ="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.surname}"></td>
+        <td th:text="${student.address.country}"></td>
+        <td th:text="${student.address.city}"></td>
+        <td th:text="${student.address.street}"></td>
+        <td th:text="${student.group.groupName}"></td>
+
+    </tr>
+</table>
+</body>
+</html>
